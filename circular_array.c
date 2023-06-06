@@ -99,3 +99,8 @@ data_type circular_array_pop(CircularArray* circular_array) {
 
     return popped_item;
 }
+
+void circular_array_destruct(CircularArray* circular_array) {
+    free(circular_array->items);
+    free(circular_array);
+}
