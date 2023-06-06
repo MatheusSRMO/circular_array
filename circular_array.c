@@ -35,15 +35,10 @@ bool circular_array_is_empty(CircularArray* circular_array) {
 }
 
 bool circular_array_is_full(CircularArray* circular_array) {
-    // Calcula o próximo índice rear considerando a capacidade
-    int next_rear = (circular_array->rear + 1) % circular_array->capacity;
-
-    // Verifica se o próximo índice rear é igual ao índice front
-    if (next_rear == circular_array->front) {
-        // Se forem iguais, significa que o CircularArray está cheio
+    if (circular_array->size == circular_array->capacity) {
         return true;
     } else {
-        // Caso contrário, o CircularArray não está cheio
+
         return false;
     }
 }
@@ -102,13 +97,13 @@ data_type circular_array_pop(CircularArray* circular_array) {
 
 void circular_array_print(CircularArray* circular_array, void (*print_fn)(data_type)) {
     printf("[");
-    for(int i = circular_array->front; i < circular_array->size; i = (i + 1) % circular_array->capacity) {
+    for(int i = circular_array->front, j = 0; j < circular_array->size; j++, i = (i + 1) % circular_array->capacity) {
         print_fn(circular_array->items[i]);
-        if(i + 1 != circular_array->size) {
+        if(i != circular_array->rear) {
             printf(", ");
         }
     }
-    printf("]");
+    printf("]\n");
 }
 
 void circular_array_destruct(CircularArray* circular_array) {
