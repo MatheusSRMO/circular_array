@@ -22,3 +22,14 @@ CircularArray* circular_array_construct(int capacity, bool dynamic) {
 
     return circular_array;
 }
+
+bool circular_array_is_empty(CircularArray* circular_array) {
+    // Verifica se o tamanho é igual a zero
+    if (circular_array->size == 0) {
+        // Se o tamanho for zero, o array está vazio
+        return true;
+    } else {
+        // Caso contrário, o array não está vazio
+        return false;
+    }
+}
