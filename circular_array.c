@@ -100,6 +100,17 @@ data_type circular_array_pop(CircularArray* circular_array) {
     return popped_item;
 }
 
+void circular_array_print(CircularArray* circular_array, void (*print_fn)(data_type)) {
+    printf("[");
+    for(int i = circular_array->front; i < circular_array->size; i = (i + 1) % circular_array->capacity) {
+        print_fn(circular_array->items[i]);
+        if(i + 1 != circular_array->size) {
+            printf(", ");
+        }
+    }
+    printf("]");
+}
+
 void circular_array_destruct(CircularArray* circular_array) {
     free(circular_array->items);
     free(circular_array);
