@@ -33,3 +33,17 @@ bool circular_array_is_empty(CircularArray* circular_array) {
         return false;
     }
 }
+
+bool circular_array_is_full(CircularArray* circular_array) {
+    // Calcula o próximo índice rear considerando a capacidade
+    int next_rear = (circular_array->rear + 1) % circular_array->capacity;
+
+    // Verifica se o próximo índice rear é igual ao índice front
+    if (next_rear == circular_array->front) {
+        // Se forem iguais, significa que o CircularArray está cheio
+        return true;
+    } else {
+        // Caso contrário, o CircularArray não está cheio
+        return false;
+    }
+}
