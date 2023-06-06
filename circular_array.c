@@ -82,3 +82,20 @@ void circular_array_push(CircularArray* circular_array, data_type data) {
     // Incrementa o tamanho do CircularArray
     circular_array->size++;
 }
+
+data_type circular_array_pop(CircularArray* circular_array) {
+    if (circular_array_is_empty(circular_array)) {
+        exit(printf("Error: circular array is empty.\n"));
+    }
+
+    // Obtém o elemento na posição do front
+    data_type popped_item = circular_array->items[circular_array->front];
+
+    // Move o ponteiro front para a próxima posição
+    circular_array->front = (circular_array->front + 1) % circular_array->capacity;
+
+    // Decrementa o tamanho do CircularArray
+    circular_array->size--;
+
+    return popped_item;
+}
